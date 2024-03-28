@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::resource(('/'),PostController::class)->names([
+    'index'=>'posts.index',
+    'create'=>'posts.create',
+    'store'=>'posts.store',
+    'show'=>'posts.show',
+]);
+Route::get('admin',function(){
+    return view('admin');
 });
